@@ -1,8 +1,13 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Fourth Pillar</title>
+
+
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
      <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -16,6 +21,26 @@
         }
         .card-content{
             text-align:center;
+        }
+        #rank-table{
+        border-collapse: collapse!important;
+        }
+
+        #rank-table th {
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+
+        }
+        #rank-table th td{
+        height:20px!important;
+        }
+        img{
+            width:80%;
+            height:80%;
+            margin-left: auto;
+	margin-right: auto;
+	display: block;
         }
     </style>
 </head>
@@ -43,22 +68,66 @@
     </nav>
     <div class="row">
         <div class="col s3">
-            left Side
+            Left side
         </div>
         <div class="col s6">
-            Main Content
+
+
+            <div class="card">
+                 <img src="{% static 'img/media-chart.png' %}">
+                <div class="card-content">
+                    Analysis of Indian News Media
+                </div>
+
+            </div>
+
+
+
+
+
+
         </div>
         <div class="col s3">
             <div class="card">
                 <div class="card-content">
                     <p><b>Top 10 news channel</b></p>
+                    <hr>
+                    <table id="rank-table" class="striped responsive-table">
+                        <thead>
+                          <tr>
+                              <th>Rank</th>
+                              <th>Channel Name</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>NDTV</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>The Hindu</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>Hindustan Times</td>
+                          </tr>
+
+                          <tr>
+                            <td>4</td>
+                            <td>Republic</td>
+                          </tr>
+
+                          <tr>
+                            <td>5</td>
+                            <td>Aaj Tak</td>
+                          </tr>
+                        </tbody>
+                  </table>
                 </div>
 
             </div>
         </div>
-
-
-
     </div>
 </body>
 </html>
