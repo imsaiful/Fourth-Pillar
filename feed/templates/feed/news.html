@@ -1,8 +1,81 @@
 {% extends "feed/base.html" %}
 {% load staticfiles %}
 {% block content %}
-<h1>Hello World</h1>
+    <div class="row">
+        <div class="col s2">
+             <div class="row">
+                <div class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">search</i>
+                      <input type="text" id="autocomplete-input" class="autocomplete">
+                      <label for="autocomplete-input">Search</label>
+                    </div>
+                  </div>
+                    <div class="sidebar">
+                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;Republic</a>
+                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;India Today</a>
+                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;NDTV</a>
+                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;The Hindu</a>
+                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa-user"></i> &nbsp;&nbsp;&nbsp;Hindustan Times</a>
+                    </div>
+
+                </div>
+
+             </div>
 
 
 
+
+
+
+        </div>
+        <div class="col s7">
+            <div class="card">
+                <ul class="browser-default">
+                    <li>{{ message }}</li><br>
+                    <li>{{ message }}</li><br>
+                    <li>{{ message }}</li><br>
+                    <li>{{ message }}</li><br>
+                    <li>{{ message }}</li><br>
+                </ul>
+            </div>
+                  <div class="card">
+                {{ message }}<br>
+                 {{ message }}<br>
+                 {{ message }}<br>
+                {{ message }}<br>
+                 {{ message }}<br>
+
+
+
+            </div>
+                  <div class="card">
+                {{ message }}<br>
+                 {{ message }}<br>
+                 {{ message }}<br>
+                {{ message }}<br>
+                 {{ message }}<br>
+
+
+
+            </div>
+                  <div class="card">
+                      <h3><b>Republic</b></h3>
+                {{ message }}<br>
+                 {{ message }}<br>
+                 {{ message }}<br>
+                {{ message }}<br>
+                 {{ message }}<br>
+            </div>
+
+
+        </div>
+        <div class="col s3">
+
+        </div>
+    </div>
 {% endblock %}
+
+
+
