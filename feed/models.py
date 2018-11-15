@@ -11,7 +11,7 @@ class Republic(models.Model):
     Sentiment = models.TextField(default="Positive", null=True)
 
     def __str__(self):
-        return self.Headline
+        return self.Headline+"  "
 
     class Meta:
         ordering = ["-Date"]
