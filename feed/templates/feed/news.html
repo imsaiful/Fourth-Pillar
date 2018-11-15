@@ -37,7 +37,7 @@
                 <h6><b>&nbsp;&nbsp;&nbsp;Republic</b></h6>
                 <ul class="browser-default">
                     {% for post in republic_headline %}
-                    <li>{{ post.Headline }}<br>
+                    <li><a href="{{ post.Link }}"> {{ post.Headline }}</a><br>
                         <small><left> {{ post.Date }}</left></small>
                     </li>
                     {% endfor %}
@@ -49,18 +49,11 @@
                 <br>
                 <h6><b>&nbsp;&nbsp;&nbsp;NDTV</b></h6>
                 <ul class="browser-default">
-                    <li>{{ message }}<br>
-                        <small><left> 14/11/18</left></small>
+                    {% for post in ndtv_headline %}
+                    <li><a href="{{ post.Link }}"> {{ post.Headline }}</a><br>
+                        <small><left> {{ post.Date }}</left></small>
                     </li>
-                    <li>{{ message }}<br>
-                        <small><left> 14/11/18</left></small></li>
-                    <li>{{ message }}<br>
-                        <small><left> 14/11/18</left></small></li>
-                    <li>{{ message }}<br>
-                        <small><left> 14/11/18</left></small></li>
-                    <li>{{ message }}<br>
-                        <small><left> 14/11/18</left></small></li>
-
+                    {% endfor %}
                 </ul>
                 <p class="news-card-bottom"><b>View all coverages from NDTV</b></p>
             </div>
@@ -69,18 +62,11 @@
                 <br>
                 <h6><b>&nbsp;&nbsp;&nbsp;India Today</b></h6>
                 <ul class="browser-default">
-                    <li>{{ message }}<br>
-                        <small><left> 14/11/18</left></small>
+                    {% for post in indiatoday_headline %}
+                    <li><a href="{{ post.Link }}"> {{ post.Headline }}</a><br>
+                        <small><left> {{ post.Date }}</left></small>
                     </li>
-                    <li>{{ message }}<br>
-                        <small><left> 14/11/18</left></small></li>
-                    <li>{{ message }}<br>
-                        <small><left> 14/11/18</left></small></li>
-                    <li>{{ message }}<br>
-                        <small><left> 14/11/18</left></small></li>
-                    <li>{{ message }}<br>
-                        <small><left> 14/11/18</left></small></li>
-
+                    {% endfor %}
                 </ul>
                 <p class="news-card-bottom"><b>View all coverages from India Today</b></p>
             </div>
