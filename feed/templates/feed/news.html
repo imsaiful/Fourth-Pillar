@@ -2,22 +2,22 @@
 {% load staticfiles %}
 {% block content %}
     <div class="row">
-        <div class="col s2">
+        <div class="col l2">
              <div class="row">
-                <div class="col s12">
+                <div class="col 12">
                   <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col l12">
                       <i class="material-icons prefix">search</i>
                       <input type="text" id="autocomplete-input" class="autocomplete">
                       <label for="autocomplete-input">Search</label>
                     </div>
                   </div>
                     <div class="sidebar">
-                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;Republic</a>
-                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;India Today</a>
-                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;NDTV</a>
-                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;The Hindu</a>
-                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa-user"></i> &nbsp;&nbsp;&nbsp;Hindustan Times</a>
+                      <a href="#republic"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;Republic</a>
+                      <a href="#ndtv"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;NDTV</a>
+                      <a href="#indiatoday"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;India Today</a>
+                      <a href="#thehindu"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;The Hindu</a>
+                      <a href="#hindustantimes"><i class="fa fa-fw fa-user"></i> &nbsp;&nbsp;&nbsp;Hindustan Times</a>
                     </div>
 
                 </div>
@@ -30,9 +30,9 @@
 
 
         </div>
-        <div class="col s7">
+        <div class="col l7">
 
-            <div class="card">
+            <div class="card" id="republic">
                 <br>
                 <h6><b>&nbsp;&nbsp;&nbsp;Republic</b></h6>
                 <ul class="browser-default">
@@ -49,10 +49,10 @@
                         <small><left> 14/11/18</left></small></li>
 
                 </ul>
-                <p class="news-card-bottom"><b>View all coverages from republic</b></p>
+                <p class="news-card-bottom"><b>View all coverages from Republic</b></p>
             </div>
 
-            <div class="card">
+            <div class="card" id="ndtv">
                 <br>
                 <h6><b>&nbsp;&nbsp;&nbsp;NDTV</b></h6>
                 <ul class="browser-default">
@@ -69,10 +69,10 @@
                         <small><left> 14/11/18</left></small></li>
 
                 </ul>
-                <p class="news-card-bottom"><b>View all coverages from republic</b></p>
+                <p class="news-card-bottom"><b>View all coverages from NDTV</b></p>
             </div>
 
-            <div class="card">
+            <div class="card" id="indiatoday">
                 <br>
                 <h6><b>&nbsp;&nbsp;&nbsp;India Today</b></h6>
                 <ul class="browser-default">
@@ -89,11 +89,11 @@
                         <small><left> 14/11/18</left></small></li>
 
                 </ul>
-                <p class="news-card-bottom"><b>View all coverages from republic</b></p>
+                <p class="news-card-bottom"><b>View all coverages from India Today</b></p>
             </div>
 
 
-            <div class="card">
+            <div class="card" id="thehindu">
                 <br>
                 <h6><b>&nbsp;&nbsp;&nbsp;The Hindu</b></h6>
                 <ul class="browser-default">
@@ -110,12 +110,12 @@
                         <small><left> 14/11/18</left></small></li>
 
                 </ul>
-                <p class="news-card-bottom"><b>View all coverages from republic</b></p>
+                <p class="news-card-bottom"><b>View all coverages from The Hindu</b></p>
 
             </div>
 
 
-            <div class="card">
+            <div class="card" id="hindustantimes">
                 <br>
                 <h6><b>&nbsp;&nbsp;&nbsp;Hindustan Times</b></h6>
                 <ul class="browser-default">
@@ -132,15 +132,12 @@
                         <small><left> 14/11/18</left></small></li>
 
                 </ul>
-                <p class="news-card-bottom"><b>View all coverages from republic</b></p>
+                <p class="news-card-bottom"><b>View all coverages from Hindustan Times</b></p>
             </div>
 
         </div>
-        <div class="col s3">
+        <div class="col l3">
 
         </div>
     </div>
 {% endblock %}
-
-
-
