@@ -4,42 +4,46 @@ from django.utils import timezone
 
 # Create your models here.
 class Republic(models.Model):
-    Headline = models.TextField(null=False)
-    Link = models.TextField(null=False,unique=True)
-    Date = models.DateTimeField(default=timezone.now)
-    Category = models.TextField(null=True)
-    Sentiment = models.TextField(null=True)
+    headline = models.TextField(null=False)
+    link = models.TextField(null=False)
+    date = models.DateTimeField(default=timezone.now)
+    category = models.TextField(null=True)
+    sentiment = models.TextField(null=True)
 
     def __str__(self):
-        return self.Headline
+        return self.headline
 
     class Meta:
-        ordering = ["-Date"]
+        ordering = ["-id"]
 
 
 class Indiatoday(models.Model):
-    Headline = models.TextField(null=False)
-    Link = models.TextField(null=False,unique=True)
-    Date = models.DateTimeField(default=timezone.now)
-    Category = models.TextField(null=True)
-    Sentiment = models.TextField(null=True)
+    headline = models.TextField(null=False)
+    link = models.TextField(null=False)
+    date = models.DateTimeField(default=timezone.now)
+    category = models.TextField(null=True)
+    sentiment = models.TextField(null=True)
 
     def __str__(self):
-        return self.Headline
+        return self.headline
 
     class Meta:
-        ordering = ["-Date"]
+        ordering = ["-id"]
 
 
 class Ndtv(models.Model):
-    Headline = models.TextField(null=False)
-    Link = models.TextField(null=False,unique=True)
-    Date = models.DateTimeField(default=timezone.now)
-    Category = models.TextField(null=True)
-    Sentiment = models.TextField(null=True)
+    headline = models.TextField(null=False)
+    link = models.TextField(null=False)
+    date = models.DateTimeField(default=timezone.now)
+    category = models.TextField(null=True)
+    sentiment = models.TextField(null=True)
 
     def __str__(self):
-        return self.Headline
+        context={
+            "headline":self.headline,
+            "category":self.category
+        }
+        return context
 
     class Meta:
-        ordering = ["-Date"]
+        ordering = ["-id"]

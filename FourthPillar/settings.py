@@ -25,7 +25,7 @@ SECRET_KEY = 'y9sr=a&mmpd1^4rfiz*e78$^dr&lc4dpqopwyj$b$x4=l-b32x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','vulpes.serveo.net']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'FourthPillar.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'news_scrapy',
-        'USER': 'postgres',
-        'PASSWORD': 'ammaji',
-        'HOST': 'localhost',
+        'NAME': 'piro',
+        'USER': 'piro',
+        'PASSWORD': 'research123',
+        'HOST': 'piro.ceubekalawiz.us-east-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }

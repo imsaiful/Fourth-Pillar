@@ -37,8 +37,8 @@
                 <h6><b>&nbsp;&nbsp;&nbsp;Republic</b></h6>
                 <ul class="browser-default">
                     {% for post in republic_headline %}
-                    <li><a href="{{ post.Link }}"> {{ post.Headline }}</a><br>
-                        <small><left> {{ post.Date }}</left></small>
+                    <li><a href="{{ post.link }}"> {{ post.headline }}</a><br>
+                        <small><left> {{ post.date }}</left></small>
                     </li>
                     {% endfor %}
                 </ul>
@@ -50,8 +50,8 @@
                 <h6><b>&nbsp;&nbsp;&nbsp;NDTV</b></h6>
                 <ul class="browser-default">
                     {% for post in ndtv_headline %}
-                    <li><a href="{{ post.Link }}"> {{ post.Headline }}</a><br>
-                        <small><left> {{ post.Date }}</left></small>
+                    <li><a href="{{ post.link }}"> {{ post.headline }}</a><br>
+                        <small><left> {{ post.date }}</left></small>
                     </li>
                     {% endfor %}
                 </ul>
@@ -63,7 +63,7 @@
                 <h6><b>&nbsp;&nbsp;&nbsp;India Today</b></h6>
                 <ul class="browser-default">
                     {% for post in indiatoday_headline %}
-                    <li><a href="{{ post.Link }}"> {{ post.Headline }}</a><br>
+                    <li><a href="{{ post.link }}"> {{ post.headline }}</a><br>
                         <small><left> {{ post.Date }}</left></small>
                     </li>
                     {% endfor %}
