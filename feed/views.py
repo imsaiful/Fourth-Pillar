@@ -3,7 +3,7 @@ from typing import List
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from .models import Republic, Ndtv, Indiatoday
+from .models import Republic, Ndtv, Indiatoday,Hindustan
 import psycopg2
 import nltk
 from nltk.corpus import stopwords
@@ -30,10 +30,10 @@ def index(request):
     headlines = ""
     republic_headline = Republic.objects.all()
     ndtv_headline = Ndtv.objects.all()
-    indiatoday_headline = Indiatoday.objects.all()
+    hindstan_headline = Hindustan.objects.all()
     getHeadLine(republic_headline)
     getHeadLine(ndtv_headline)
-    getHeadLine(indiatoday_headline)
+    getHeadLine(hindstan_headline)
     fd = FreqDist()
     headlines_token = nltk.word_tokenize(headlines)
     stop_words = stopwords.words('english')
@@ -62,13 +62,14 @@ def index(request):
 def news(request):
     republic_headline = Republic.objects.order_by('-date')[0:5]
     indiatoday_headline = Indiatoday.objects.order_by('-date')[0:5]
+    hindustan_headline = Hindustan.objects.order_by('-date')[0:5]
     ndtv_headline = Ndtv.objects.order_by('-date')[0:5]
     message = "Pakistan can't even control its four provinces. It doesn't want Kashmir"
     context = {
         'republic_headline': republic_headline,
         'ndtv_headline': ndtv_headline,
         'indiatoday_headline': indiatoday_headline,
-        'message': message,
+        'hindustan_headline': hindustan_headline,
     }
 
     return render(request, 'feed/news.html', context)
