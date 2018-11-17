@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from .models import Republic,Ndtv,Indiatoday
+from .models import Republic, Ndtv, Indiatoday
 
 
 def index(request):
@@ -26,3 +26,14 @@ def news(request):
     }
 
     return render(request, 'feed/news.html', context)
+
+
+def republic(request):
+    republic_headline = Republic.objects.all()
+    context = {
+        'republic_headline': republic_headline,
+    }
+
+    return render(request, 'feed/republic.html', context)
+
+

@@ -5,13 +5,13 @@ from django.utils import timezone
 # Create your models here.
 class Republic(models.Model):
     Headline = models.TextField(null=False)
-    Link = models.TextField(null=False, primary_key=True)
-    Date = models.DateTimeField(default=timezone.now, null=True)
-    Category = models.TextField(default="uncategorized", null=True)
-    Sentiment = models.TextField(default="Positive", null=True)
+    Link = models.TextField(null=False)
+    Date = models.DateTimeField(default=timezone.now)
+    Category = models.TextField(null=True)
+    Sentiment = models.TextField(null=True)
 
     def __str__(self):
-        return self.Headline+"  "
+        return self.Headline
 
     class Meta:
         ordering = ["-Date"]
@@ -19,10 +19,10 @@ class Republic(models.Model):
 
 class Indiatoday(models.Model):
     Headline = models.TextField(null=False)
-    Link = models.TextField(null=False, primary_key=True)
-    Date = models.DateTimeField(default=timezone.now, null=True)
-    Category = models.TextField(default="uncategorized", null=True)
-    Sentiment = models.TextField(default="Positive", null=True)
+    Link = models.TextField(null=False)
+    Date = models.DateTimeField(default=timezone.now)
+    Category = models.TextField(null=True)
+    Sentiment = models.TextField(null=True)
 
     def __str__(self):
         return self.Headline
@@ -33,10 +33,10 @@ class Indiatoday(models.Model):
 
 class Ndtv(models.Model):
     Headline = models.TextField(null=False)
-    Link = models.TextField(null=False, primary_key=True)
+    Link = models.TextField(null=False)
     Date = models.DateTimeField(default=timezone.now)
-    Category = models.TextField(default="uncategorized")
-    Sentiment = models.TextField(default="Positive")
+    Category = models.TextField(null=True)
+    Sentiment = models.TextField(null=True)
 
     def __str__(self):
         return self.Headline

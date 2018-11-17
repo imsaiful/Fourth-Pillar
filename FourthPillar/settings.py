@@ -77,13 +77,15 @@ WSGI_APPLICATION = 'FourthPillar.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'news_scrap',
+        'NAME': 'news_scrapy',
         'USER': 'postgres',
         'PASSWORD': 'ammaji',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
+
 
 
 # Password validation
