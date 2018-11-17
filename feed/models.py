@@ -5,7 +5,7 @@ from django.utils import timezone
 # Create your models here.
 class Republic(models.Model):
     Headline = models.TextField(null=False)
-    Link = models.TextField(null=False)
+    Link = models.TextField(null=False,unique=True)
     Date = models.DateTimeField(default=timezone.now)
     Category = models.TextField(null=True)
     Sentiment = models.TextField(null=True)
@@ -19,7 +19,7 @@ class Republic(models.Model):
 
 class Indiatoday(models.Model):
     Headline = models.TextField(null=False)
-    Link = models.TextField(null=False)
+    Link = models.TextField(null=False,unique=True)
     Date = models.DateTimeField(default=timezone.now)
     Category = models.TextField(null=True)
     Sentiment = models.TextField(null=True)
@@ -33,7 +33,7 @@ class Indiatoday(models.Model):
 
 class Ndtv(models.Model):
     Headline = models.TextField(null=False)
-    Link = models.TextField(null=False)
+    Link = models.TextField(null=False,unique=True)
     Date = models.DateTimeField(default=timezone.now)
     Category = models.TextField(null=True)
     Sentiment = models.TextField(null=True)

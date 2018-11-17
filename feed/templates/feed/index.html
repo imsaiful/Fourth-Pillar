@@ -23,35 +23,24 @@
         </div>
         <div class="col l7">
             <div class="card">
-
-            <canvas id="mychart">
-
-
-
-            </canvas>
+                {{ keyword }}
+                {{ keyword_frequency }}
 
             </div>
             <div class="card">
-                 <img src="{% static 'img/media-chart.png' %}">
+                <canvas id="categorychart">
+                </canvas>
                 <div class="card-content">
                     Analysis of Indian News Media
                 </div>
-
             </div>
-            <br>
             <div class="card">
-                 <img src="{% static 'img/topic.png' %}">
-                <div class="card-content">
-                    Top Keyword in Indian Media
+                <canvas id="keywordchart">
+                </canvas>
+                 <div class="card-content">
+                    Top keyword by indian media
                 </div>
-
             </div>
-
-
-
-
-
-
         </div>
         <div class="col l3">
             <div class="card">

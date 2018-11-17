@@ -25,7 +25,7 @@ SECRET_KEY = 'y9sr=a&mmpd1^4rfiz*e78$^dr&lc4dpqopwyj$b$x4=l-b32x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','vulpes.serveo.net']
 
 
 # Application definition
