@@ -76,7 +76,7 @@ def news(request):
 
 
 def republic(request):
-    republic_headline = Republic.objects.all()
+    republic_headline = Republic.objects.order_by('-date')[0:100]
     context = {
         'republic_headline': republic_headline,
     }

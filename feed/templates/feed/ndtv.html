@@ -3,23 +3,7 @@
 {% block content %}
     <div class="row">
         <div class="col l2">
-             <div class="row">
-                <div class="col l12">
-                  <div class="row">
-                    <div class="input-field col l12">
-                      <i class="material-icons prefix">search</i>
-                      <input type="text" id="autocomplete-input" class="autocomplete">
-                      <label for="autocomplete-input">Search</label>
-                    </div>
-                  </div>
-                    <div class="sidebar">
-                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;Top News</a>
-                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa-user"></i> &nbsp;&nbsp;&nbsp;Your Profile</a>
-                    </div>
-
-                </div>
-
-             </div>
+            {% include 'feed/leftsidemenu.html' %}
         </div>
         <div class="col l7">
 
@@ -37,45 +21,7 @@
 
         </div>
         <div class="col l3">
-            <div class="card">
-                <div class="card-content">
-                    <p><b>Top 10 news channel</b></p>
-                    <hr>
-                    <table id="rank-table" class="striped responsive-table">
-                        <thead>
-                          <tr>
-                              <th>Rank</th>
-                              <th>Channel Name</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>NDTV</td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>The Hindu</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>Hindustan Times</td>
-                          </tr>
-
-                          <tr>
-                            <td>4</td>
-                            <td>Republic</td>
-                          </tr>
-
-                          <tr>
-                            <td>5</td>
-                            <td>Aaj Tak</td>
-                          </tr>
-                        </tbody>
-                  </table>
-                </div>
-
-            </div>
+            {% include 'feed/rightsiderank.html' %}
         </div>
     </div>
 {% endblock %}
