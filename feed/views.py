@@ -76,9 +76,33 @@ def news(request):
 
 
 def republic(request):
-    republic_headline = Republic.objects.order_by('-date')[0:100]
+    republic_headline = Republic.objects.order_by('-date')[0:20]
     context = {
         'republic_headline': republic_headline,
     }
 
     return render(request, 'feed/republic.html', context)
+
+def ndtv(request):
+    ndtv_headline = Ndtv.objects.order_by('-date')[0:20]
+    context = {
+        'ndtv_headline': ndtv_headline,
+    }
+
+    return render(request, 'feed/ndtv.html', context)
+
+def indiatoday(request):
+    indiatoday_headline = Indiatoday.objects.order_by('-date')[0:20]
+    context = {
+        'indiatoday_headline': indiatoday_headline,
+    }
+
+    return render(request, 'feed/indiatoday.html', context)
+
+def hindustan(request):
+    hindustan_headline = Hindustan.objects.order_by('-date')[0:20]
+    context = {
+        'hindustan_headline': hindustan_headline,
+    }
+
+    return render(request, 'feed/hindustan.html', context)
