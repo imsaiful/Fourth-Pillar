@@ -14,7 +14,7 @@ headlines = ""
 
 new_stop_words = ['says', 'khan', 'singh', "'s", "''",
                   'to', 'in', 'for', 'on', 'of', '``', 'and', 'the',
-                  'a', 'after', '10', "n't", 'man', 'us', 'first', 'day', "'", '’'
+                  'a', 'after', '10', "n't", 'man', 'us', 'first', 'day', "'", '’','‘','new','vs'
 
                   ]
 
@@ -28,9 +28,9 @@ def getHeadLine(headline):
 def index(request):
     global headlines
     headlines = ""
-    republic_headline = Republic.objects.all()
-    ndtv_headline = Ndtv.objects.all()
-    hindstan_headline = Hindustan.objects.all()
+    republic_headline= Republic.objects.order_by('-date')[0:100]
+    ndtv_headline = Ndtv.objects.order_by('-date')[0:100]
+    hindstan_headline = Hindustan.objects.order_by('-date')[0:100]
     getHeadLine(republic_headline)
     getHeadLine(ndtv_headline)
     getHeadLine(hindstan_headline)
