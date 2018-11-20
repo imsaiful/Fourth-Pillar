@@ -1,5 +1,6 @@
 from typing import List
 
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
@@ -76,7 +77,16 @@ def news(request):
 
 
 def republic(request):
-    republic_headline = Republic.objects.order_by('-date')[0:20]
+    republic_headline = Republic.objects.all().order_by('-date')
+    paginator = Paginator(republic_headline, 10)
+    page = request.GET.get('page')
+    try:
+        republic_headline = paginator.page(page)
+    except PageNotAnInteger:
+        republic_headline = paginator.page(1)
+    except EmptyPage:
+        republic_headline = paginator.page(paginator.num_pages)
+
     context = {
         'republic_headline': republic_headline,
     }

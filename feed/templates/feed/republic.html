@@ -19,8 +19,34 @@
                     </li>
                     {% endfor %}
                 </ul>
+                <ul class="pagination">
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+
+                            {% if republic_headline.has_previous %}
+                    <li class="waves-effect"> <a href="?page=1">&laquo; first</a></li>
+                    <li class="waves-effect"> <a href="?page={{ republic_headline.previous_page_number }}">previous</a></li>
+                            {% endif %}
+
+                            <li class="active">
+                                Page {{ republic_headline.number }} of {{ republic_headline.paginator.num_pages }}.
+                            </li>
+                            <li class="waves-effect"><a href="?page={{ republic_headline.next_page_number }}"> {{ republic_headline.next_page_number }}.</a></li>
+                            <li class="waves-effect"><a href="?page={{ republic_headline.next_page_number.next_page_number }}">{{ republic_headline.next_page_number.next_page_number }}</a></li>
+                            <li class="waves-effect"><a href="?page={{ republic_headline.next_page_number.next_page_number.next_page_number }}">{{ republic_headline.next_page_number.next_page_number.next_page_number }}</a></li>
+
+
+                            {% if republic_headline.has_next %}
+                    <li class="waves-effect">   <a href="?page={{ republic_headline.next_page_number }}">next</a></li>
+                    <li class="waves-effect">   <a href="?page={{ republic_headline.paginator.num_pages }}">last &raquo;</a></li>
+                            {% endif %}
+
+                    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                </ul>
 
             </div>
+
+
+
 
         </div>
         <div class="col l3">

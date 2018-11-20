@@ -14,7 +14,7 @@ class Republic(models.Model):
         return self.headline
 
     class Meta:
-        ordering = ["-id"]
+        ordering = ["-date"]
 
 
 class Indiatoday(models.Model):
@@ -38,12 +38,9 @@ class Ndtv(models.Model):
     category = models.TextField(null=True)
     sentiment = models.TextField(null=True)
 
+
     def __str__(self):
-        context={
-            "headline":self.headline,
-            "category":self.category
-        }
-        return context
+        return self.headline
 
     class Meta:
         ordering = ["-id"]
@@ -56,13 +53,11 @@ class Hindustan(models.Model):
     date = models.DateTimeField(default=timezone.now)
     category = models.TextField(null=True)
     sentiment = models.TextField(null=True)
+    
+
 
     def __str__(self):
-        context={
-            "headline":self.headline,
-            "category":self.category
-        }
-        return context
+        return self.headline
 
     class Meta:
         ordering = ["-id"]
