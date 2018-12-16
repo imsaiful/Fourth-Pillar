@@ -174,6 +174,41 @@ class LoginForm(generic.CreateView):
         else:
             print(form.errors)
 
+class SignUpForm(generic.CreateView):
+    form_class = SignUpForm
+    template_name = "feed/SignUp.html"
+
+    def get(self, request):
+        title = "SignUp - Save 4th pillar"
+        form = self.form_class(None)
+        context = {
+            "title": title,
+            "form": form,
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            print("form valid")
+            user = form.save(commit=False)
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user.set_password(password)
+            form.save()
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('feed:index')
+        else:
+            print(form.errors)
+
+        return render(request, self.template_name, {'form': form})
+
+
+
 def logout_view(request):
     logout(request)
     return index(request)

@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^indiatoday$', views.indiatoday, name='indiatoday'),
     url(r'^hindustan$', views.hindustan, name='hindustan'),
     url(r'^logout$', views.logout_view, name='logout'),
+    url(r'^signup$', views.SignUpForm.as_view(), name='signup'),
 
 ]
