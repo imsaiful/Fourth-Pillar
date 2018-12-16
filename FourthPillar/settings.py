@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'FourthPillar.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'piro',
         'USER': 'piro',
         'PASSWORD': 'research123',

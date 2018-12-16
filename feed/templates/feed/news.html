@@ -18,6 +18,14 @@
                       <a href="#indiatoday"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;India Today</a>
                       <a href="#thehindu"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;The Hindu</a>
                       <a href="#hindustantimes"><i class="fa fa-fw fa-list"></i> &nbsp;&nbsp;&nbsp;Hindustan Times</a>
+                        {% if not user.is_authenticated %}
+            <a href="">&nbsp;Sign Up</a>
+            <a href="{% url 'login' %}"></span>&nbsp;Login</a>
+      {% else %}
+          <a href=""></span>&nbsp;{{ user.username }}</a>
+          <a href=""><span class=""></span>&nbsp;logout</a>
+
+        {% endif %}
                     </div>
 
                 </div>

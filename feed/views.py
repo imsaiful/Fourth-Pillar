@@ -1,10 +1,15 @@
 from typing import List
-
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+from django.core.validators import validate_email
+from django.contrib.auth import login, authenticate
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from .models import Republic, Ndtv, Indiatoday,Hindustan
+from django.views import generic
+from .forms import SignUpForm, LoginForm
+from .models import Republic, Ndtv, Indiatoday,Hindustan,Thehindu,Zeenews
 import psycopg2
 import nltk
 from nltk.corpus import stopwords
@@ -15,7 +20,7 @@ headlines = ""
 
 new_stop_words = ['says', 'khan', 'singh', "'s", "''",
                   'to', 'in', 'for', 'on', 'of', '``', 'and', 'the',
-                  'a', 'after', '10', "n't", 'man', 'us', 'first', 'day', "'", '’','‘','new','vs'
+                  'a', 'after', '10', "n't", 'man', 'us', 'first', 'day', "'", '’','‘','new','vs','india','top'
 
                   ]
 
@@ -29,12 +34,17 @@ def getHeadLine(headline):
 def index(request):
     global headlines
     headlines = ""
-    republic_headline= Republic.objects.order_by('-date')[0:1]
-    ndtv_headline = Ndtv.objects.order_by('-date')[0:1]
-    hindstan_headline = Hindustan.objects.order_by('-date')[0:1]
+    republic_headline= Republic.objects.order_by('-date')[0:100]
+    ndtv_headline = Ndtv.objects.order_by('-date')[0:100]
+    hindstan_headline = Hindustan.objects.order_by('-date')[0:100]
+    thehindu_headline = Thehindu.objects.order_by('-date')[0:100]
+    zeenews_headline = Zeenews.objects.order_by('-date')[0:100]
+
     getHeadLine(republic_headline)
     getHeadLine(ndtv_headline)
     getHeadLine(hindstan_headline)
+    getHeadLine(thehindu_headline)
+    getHeadLine(zeenews_headline)
     fd = FreqDist()
     headlines_token = nltk.word_tokenize(headlines)
     stop_words = stopwords.words('english')
@@ -67,7 +77,6 @@ def news(request):
     ndtv_headline = Ndtv.objects.order_by('-date')[0:5]
     hindu_headline = Ndtv.objects.order_by('-date')[0:5]
     zeenews_headline = Ndtv.objects.order_by('-date')[0:5]
-    message = "Pakistan can't even control its four provinces. It doesn't want Kashmir"
     context = {
         'republic_headline': republic_headline,
         'ndtv_headline': ndtv_headline,
@@ -120,3 +129,48 @@ def hindustan(request):
     }
 
     return render(request, 'feed/hindustan.html', context)
+
+
+
+class LoginForm(generic.CreateView):
+    print("login")
+    form_class = LoginForm
+    template_name = "feed/SignUp.html"
+
+    def get(self, request):
+        title = "Login to Vote"
+        form = self.form_class(None)
+        context = {
+            "title": title,
+            "form": form,
+
+        }
+        return render(request, self.template_name, context)
+
+    def Post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            try:
+                print("try")
+                username = request.POST['username']
+                username = User.objects.get(email=username).username  # Get username with email
+                password = request.POST['password']
+                validate_email(username)  # If it's a valid email
+                user = authenticate(request, username=username, password=password)
+                if user is not None:
+                    if user.is_active:
+                        login(request, user)
+                        return redirect('')
+
+            except:
+                print("except")
+                UserModel = get_user_model()
+
+                password = request.POST['password']
+                user = authenticate(request, username=username, password=password)
+                if user is not None:
+                    if user.is_active:
+                        login(request, user)
+                        return redirect('')
+        else:
+            print(form.errors)

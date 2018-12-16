@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm,password_reset_complete,LoginView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('feed.urls')),
-    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^login/$', LoginView.as_view(), name="login"),
     url(r'^logout/$', auth_views.logout, name='logout'),
 ]
 
