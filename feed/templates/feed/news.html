@@ -23,7 +23,7 @@
             <a href="{% url 'login' %}"></span>&nbsp;Login</a>
       {% else %}
           <a href=""></span>&nbsp;{{ user.username }}</a>
-          <a href=""><span class=""></span>&nbsp;logout</a>
+          <a href="{% url 'feed:logout' %}"><span class=""></span>&nbsp;logout</a>
 
         {% endif %}
                     </div>

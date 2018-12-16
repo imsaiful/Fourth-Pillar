@@ -1,11 +1,10 @@
 from typing import List
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model,logout
 from django.contrib.auth.models import User
 from django.core.validators import validate_email
 from django.contrib.auth import login, authenticate
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render,redirect
-from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views import generic
 from .forms import SignUpForm, LoginForm
@@ -174,3 +173,7 @@ class LoginForm(generic.CreateView):
                         return redirect('')
         else:
             print(form.errors)
+
+def logout_view(request):
+    logout(request)
+    return index(request)

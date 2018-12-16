@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^ndtv$', views.ndtv, name='ndtv'),
     url(r'^indiatoday$', views.indiatoday, name='indiatoday'),
     url(r'^hindustan$', views.hindustan, name='hindustan'),
+    url(r'^logout$', views.logout_view, name='logout'),
 
 ]
