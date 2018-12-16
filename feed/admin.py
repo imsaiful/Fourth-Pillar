@@ -1,8 +1,5 @@
 from django.contrib import admin
-from .models import Republic, Ndtv, Indiatoday,Hindustan
-
-
-
+from .models import Republic, Ndtv, Indiatoday, Hindustan
 
 admin.site.register(Republic)
 admin.site.register(Ndtv)

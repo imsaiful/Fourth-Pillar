@@ -29,9 +29,9 @@ def getHeadLine(headline):
 def index(request):
     global headlines
     headlines = ""
-    republic_headline= Republic.objects.order_by('-date')[0:100]
-    ndtv_headline = Ndtv.objects.order_by('-date')[0:100]
-    hindstan_headline = Hindustan.objects.order_by('-date')[0:100]
+    republic_headline= Republic.objects.order_by('-date')[0:1]
+    ndtv_headline = Ndtv.objects.order_by('-date')[0:1]
+    hindstan_headline = Hindustan.objects.order_by('-date')[0:1]
     getHeadLine(republic_headline)
     getHeadLine(ndtv_headline)
     getHeadLine(hindstan_headline)
@@ -77,7 +77,7 @@ def news(request):
 
 
 def republic(request):
-    republic_headline = Republic.objects.all().order_by('-date')
+    republic_headline = Republic.objects.all().order_by('-id')
     paginator = Paginator(republic_headline, 10)
     page = request.GET.get('page')
     try:
@@ -94,7 +94,7 @@ def republic(request):
     return render(request, 'feed/republic.html', context)
 
 def ndtv(request):
-    ndtv_headline = Ndtv.objects.order_by('-date')[0:20]
+    ndtv_headline = Ndtv.objects.order_by('-id')[0:20]
     context = {
         'ndtv_headline': ndtv_headline,
     }

@@ -10,6 +10,8 @@
                     <div class="sidebar">
                       <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;Top News</a>
                       <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa-user"></i> &nbsp;&nbsp;&nbsp;Your Profile</a>
-                    </div>
+                      {% include "registration/login.html" %}
                 </div>
+
+</div>
 </div>

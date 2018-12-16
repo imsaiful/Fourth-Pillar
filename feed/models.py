@@ -3,6 +3,7 @@ from django.utils import timezone
 
 
 # Create your models here.
+
 class Republic(models.Model):
     headline = models.TextField(null=False)
     link = models.TextField(null=False)
@@ -35,6 +36,7 @@ class Ndtv(models.Model):
     headline = models.TextField(null=False)
     link = models.TextField(null=False)
     date = models.DateTimeField(default=timezone.now)
+
     category = models.TextField(null=True)
     sentiment = models.TextField(null=True)
 
@@ -46,15 +48,12 @@ class Ndtv(models.Model):
         ordering = ["-id"]
 
 
-
 class Hindustan(models.Model):
     headline = models.TextField(null=False)
     link = models.TextField(null=False)
-    date = models.DateTimeField(default=timezone.now)
+    date = models.DateTimeField(auto_now_add=True)
     category = models.TextField(null=True)
     sentiment = models.TextField(null=True)
-    
-
 
     def __str__(self):
         return self.headline
