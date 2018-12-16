@@ -73,6 +73,32 @@
 
             <div class="card" id="hindustantimes">
                 <br>
+                <h6><b>&nbsp;&nbsp;&nbsp;The Hindu</b></h6>
+                <ul class="browser-default">
+                    {% for post in hindu_headline %}
+                    <li><a href="{{ post.link }}"> {{ post.headline }}</a><br>
+                        <small><left> {{ post.date }}</left></small>
+                    </li>
+                    {% endfor %}
+                </ul>
+               <p class="news-card-bottom"><b><a href="{% url 'feed:hindustan' %}"> View all coverages from Hindustan Time</a></b></p>
+            </div>
+
+            <div class="card" id="thehindu">
+                <br>
+                <h6><b>&nbsp;&nbsp;&nbsp;Zee News</b></h6>
+                <ul class="browser-default">
+                    {% for post in zeenews_headline %}
+                    <li><a href="{{ post.link }}"> {{ post.headline }}</a><br>
+                        <small><left> {{ post.date }}</left></small>
+                    </li>
+                    {% endfor %}
+                </ul>
+               <p class="news-card-bottom"><b><a href="{% url 'feed:hindustan' %}"> View all coverages from Hindustan Time</a></b></p>
+            </div>
+
+            <div class="card" id="zeenews">
+                <br>
                 <h6><b>&nbsp;&nbsp;&nbsp;Hindustan Times</b></h6>
                 <ul class="browser-default">
                     {% for post in hindustan_headline %}
@@ -84,12 +110,7 @@
                <p class="news-card-bottom"><b><a href="{% url 'feed:hindustan' %}"> View all coverages from Hindustan Time</a></b></p>
             </div>
 
-            <div class="card" id="thehindu">
-                <br>
 
-                <p class="news-card-bottom"><b><a href="{% url 'feed:republic' %}"> View all coverages from The Hindu</a></b></p>
-
-            </div>
 
         </div>
         <div class="col l3">

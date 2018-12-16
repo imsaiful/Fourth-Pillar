@@ -65,12 +65,16 @@ def news(request):
     indiatoday_headline = Indiatoday.objects.order_by('-date')[0:5]
     hindustan_headline = Hindustan.objects.order_by('-date')[0:5]
     ndtv_headline = Ndtv.objects.order_by('-date')[0:5]
+    hindu_headline = Ndtv.objects.order_by('-date')[0:5]
+    zeenews_headline = Ndtv.objects.order_by('-date')[0:5]
     message = "Pakistan can't even control its four provinces. It doesn't want Kashmir"
     context = {
         'republic_headline': republic_headline,
         'ndtv_headline': ndtv_headline,
         'indiatoday_headline': indiatoday_headline,
         'hindustan_headline': hindustan_headline,
+        'hindu_headline':hindu_headline,
+        'zeenews_headline':zeenews_headline
     }
 
     return render(request, 'feed/news.html', context)
