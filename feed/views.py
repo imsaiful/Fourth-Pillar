@@ -19,7 +19,8 @@ headlines = ""
 
 new_stop_words = ['says', 'khan', 'singh', "'s", "''",
                   'to', 'in', 'for', 'on', 'of', '``', 'and', 'the',
-                  'a', 'after', '10', "n't", 'man', 'us', 'first', 'day', "'", '’', '‘', 'new', 'vs', 'india', 'top'
+                  'a', 'after', '10', "n't", 'man', 'us', 'first', 'day', "'", '’', '‘', 'new', 'vs', 'india', 'top','...','life',
+                  'gets','back','takes'
 
                   ]
 
@@ -54,13 +55,15 @@ def index(request):
 
     keyword = []
     keyword_frequency: List[int] = []
-    for word, frequency in fd.most_common(12):
+    for word, frequency in fd.most_common(11):
         keyword.append(word)
         keyword_frequency.append(frequency)
 
     print(keyword)
     print(keyword_frequency)
 
+    keyword.append("end")
+    keyword_frequency.append(0)
     context = {
         "keyword": keyword,
         "keyword_frequency": keyword_frequency,
