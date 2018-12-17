@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
+from django.conf import settings
 
 
 # Create your models here.
@@ -40,7 +42,6 @@ class Ndtv(models.Model):
     category = models.TextField(null=True)
     sentiment = models.TextField(null=True)
 
-
     def __str__(self):
         return self.headline
 
@@ -75,6 +76,7 @@ class Thehindu(models.Model):
     class Meta:
         ordering = ["-id"]
 
+
 class Zeenews(models.Model):
     headline = models.TextField(null=False)
     link = models.TextField(null=False)
@@ -87,3 +89,4 @@ class Zeenews(models.Model):
 
     class Meta:
         ordering = ["-id"]
+
