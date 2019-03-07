@@ -46,6 +46,7 @@
             <script>
     let keywordchart=document.getElementById('keywordchart').getContext('2d');
 
+
     let drawkeywordchart=new Chart(keywordchart,{
         type:'bar',
         data:{
@@ -56,6 +57,7 @@
                         '#64B5F6','#E3F2FD','#F06292','#CDDC39','#EA80FC','#FF8A65','#81C784',
                         '#64B5F6','#E3F2FD','#F06292'
                         ],
+
                         borderWidth:3,
                         borderColor:'#777',
                         hoverBorderWidth:6,
@@ -64,8 +66,23 @@
                   ],
 
         },
-        options:{}
+
+
+
+
+        options:{
+                'onClick' : function (evt, item) {
+            var keyword = item[0]['_model'].label
+            var url = "{% url 'feed:keyword' %}";
+
+            document.location.href = url+keyword;
+
+          },
+        }
+
     });
+
+
 
     let categorychart=document.getElementById('categorychart').getContext('2d');
     let drawcategorychart=new Chart(categorychart,{
@@ -83,8 +100,14 @@
                   ],
 
         },
-        options:{}
+        options:{
+
+
+
+
+        }
     });
+
 
 
 

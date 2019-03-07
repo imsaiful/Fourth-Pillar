@@ -14,13 +14,15 @@ import nltk
 from nltk.corpus import stopwords
 import string
 from nltk.probability import FreqDist
+from django.db.models import Q
 
 headlines = ""
 
 new_stop_words = ['says', 'khan', 'singh', "'s", "''",
                   'to', 'in', 'for', 'on', 'of', '``', 'and', 'the',
-                  'a', 'after', '10', "n't", 'man', 'us', 'first', 'day', "'", '’', '‘', 'new', 'vs', 'india', 'top','...','life',
-                  'gets','back','takes'
+                  'a', 'after', '10', "n't", 'man', 'us', 'first', 'day', "'", '’', '‘', 'new', 'vs', 'india', 'top',
+                  '...', 'life',
+                  'gets', 'back', 'takes'
 
                   ]
 
@@ -73,12 +75,12 @@ def index(request):
 
 
 def news(request):
-    republic_headline = Republic.objects.order_by('-date')[0:5]
-    indiatoday_headline = Indiatoday.objects.order_by('-date')[0:5]
-    hindustan_headline = Hindustan.objects.order_by('-date')[0:5]
-    ndtv_headline = Ndtv.objects.order_by('-date')[0:5]
-    hindu_headline = Ndtv.objects.order_by('-date')[0:5]
-    zeenews_headline = Ndtv.objects.order_by('-date')[0:5]
+    republic_headline = Republic.objects.order_by('-id')[0:5]
+    indiatoday_headline = Indiatoday.objects.order_by('-id')[0:5]
+    hindustan_headline = Hindustan.objects.order_by('-id')[0:5]
+    ndtv_headline = Ndtv.objects.order_by('-id')[0:5]
+    hindu_headline = Thehindu.objects.order_by('-id')[0:5]
+    zeenews_headline = Zeenews.objects.order_by('-id')[0:5]
     context = {
         'republic_headline': republic_headline,
         'ndtv_headline': ndtv_headline,
@@ -255,3 +257,16 @@ def stats(request):
     }
 
     return render(request, "feed/stats.html", context)
+
+
+class FindKeyWordNews(generic.ListView):
+    template_name = "feed/keyword.html"
+
+    def get_queryset(self):
+        keyword = self.kwargs.get("keyword")
+        if keyword:
+            query_list = Republic.objects.filter(Q(headline__icontains=keyword))
+        return query_list
+
+
+
