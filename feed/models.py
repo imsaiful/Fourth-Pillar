@@ -90,3 +90,7 @@ class Zeenews(models.Model):
     class Meta:
         ordering = ["-id"]
 
+
+class IndexTop10(models.Model):
+    db_keyword = models.TextField(null=False)
+    db_frequency = models.PositiveIntegerField(null=False, default=0)
