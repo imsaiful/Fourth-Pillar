@@ -1,4 +1,5 @@
 from typing import List
+from itertools import chain
 from django.contrib.auth import get_user_model, logout
 from django.contrib.auth.models import User
 from django.core.validators import validate_email
@@ -8,7 +9,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import render
 from django.views import generic
 from .forms import SignUpForm, LoginForm
-from .models import Republic, Ndtv, Indiatoday, Hindustan, Thehindu, Zeenews,IndexTop10
+from .models import Republic, Ndtv, Indiatoday, Hindustan, Thehindu, Zeenews, IndexTop10
 import psycopg2
 import nltk
 from nltk.corpus import stopwords
@@ -22,7 +23,7 @@ new_stop_words = ['says', 'khan', 'singh', "'s", "''",
                   'to', 'in', 'for', 'on', 'of', '``', 'and', 'the',
                   'a', 'after', '10', "n't", 'man', 'us', 'first', 'day', "'", '’', '‘', 'new', 'vs', 'india', 'top',
                   '...', 'life',
-                  'gets', 'back', 'takes','rs','take'
+                  'gets', 'back', 'takes', 'rs', 'take'
 
                   ]
 
@@ -34,8 +35,8 @@ def getHeadLine(headline):
 
 
 def index(request):
-    keyword=[]
-    keyword_frequency=[]
+    keyword = []
+    keyword_frequency = []
     for key in IndexTop10.objects.all():
         keyword.append(key.db_keyword)
         keyword_frequency.append(key.db_frequency)
@@ -48,7 +49,6 @@ def index(request):
     }
 
     return render(request, 'feed/index.html', context)
-
 
 
 def news(request):
@@ -240,10 +240,20 @@ class FindKeyWordNews(generic.ListView):
     template_name = "feed/keyword.html"
 
     def get_queryset(self):
+        query_list = []
         keyword = self.kwargs.get("keyword")
         if keyword:
-            query_list = Republic.objects.filter(Q(headline__icontains=keyword))
-        return query_list
+            republic = Republic.objects.filter(Q(headline__icontains=keyword)).order_by('-id')
+            ndtv = Ndtv.objects.filter(Q(headline__icontains=keyword)).order_by('-id')
+            indiatoday = Indiatoday.objects.filter(Q(headline__icontains=keyword)).order_by('-id')
+            hindustan = Hindustan.objects.filter(Q(headline__icontains=keyword)).order_by('-id')
+            thehindu = Thehindu.objects.filter(Q(headline__icontains=keyword)).order_by('-id')
+            zee = Zeenews.objects.filter(Q(headline__icontains=keyword)).order_by('-id')
+            query_list = list(chain(republic, ndtv, indiatoday, hindustan, thehindu, zee))
 
+        context = {
+            "keyword": keyword,
+            "query_list": query_list
 
-
+        }
+        return context
