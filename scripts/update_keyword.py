@@ -1,4 +1,4 @@
-from ..feed.models import Republic, Ndtv, Indiatoday, Hindustan, Thehindu, Zeenews,IndexTop10
+from feed.models import Republic, Ndtv, Indiatoday, Hindustan, Thehindu, Zeenews,IndexTop10
 import psycopg2
 import nltk
 
@@ -47,6 +47,7 @@ def run():
                 fd[word.lower()] += 1
     pk = 0
     for word, frequency in fd.most_common(11):
-        update = IndexTop10(db_keyword=word, db_frequency=frequency)
+        print(word)
+        update = IndexTop10(pk,db_keyword=word, db_frequency=frequency)
         update.save()
         pk = pk + 1
