@@ -1,11 +1,9 @@
 from feed.models import Republic, Ndtv, Indiatoday, Hindustan, Thehindu, Zeenews,IndexTop10
-import psycopg2
 import nltk
 
 from nltk.corpus import stopwords
 import string
 from nltk.probability import FreqDist
-from django.db.models import Q
 
 headlines = ""
 
