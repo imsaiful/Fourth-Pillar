@@ -20,8 +20,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import News
-
+from .serializers import NewsSerializer
 
 headlines = ""
 
@@ -265,3 +264,13 @@ class FindKeyWordNews(generic.ListView):
         return context
 
 
+class NewsList(APIView):
+
+    def get(self,arg):
+        news = Republic.objects.all()
+        serializer = NewsSerializer(news, many=True)
+
+        return Response(serializer.data)
+
+    def post(self):
+        pass

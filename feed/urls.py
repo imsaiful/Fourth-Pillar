@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from . import views
 
+
 app_name = 'feed'
 
 urlpatterns = [
@@ -15,5 +16,6 @@ urlpatterns = [
     url(r'^hindustan$', views.hindustan, name='hindustan'),
     url(r'^logout$', views.logout_view, name='logout'),
     url(r'^signup$', views.SignUpForm.as_view(), name='signup'),
+    url(r'^newsAPI/$', views.NewsList.as_view(), name='newsAPI'),
 
 ]
