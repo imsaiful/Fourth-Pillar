@@ -1,4 +1,4 @@
-from feed.models import Republic, Ndtv, Indiatoday, Hindustan, Thehindu, Zeenews, IndexTop10
+from feed.models import Republic, Ndtv, Indiatoday, Hindustan, Thehindu, Zeenews, IndexTop10, Indiatoday
 import nltk
 from nltk.corpus import stopwords
 import string
@@ -30,15 +30,19 @@ def run():
     hindstan_headline = Hindustan.objects.order_by('-date')[0:100]
     thehindu_headline = Thehindu.objects.order_by('-date')[0:100]
     zeenews_headline = Zeenews.objects.order_by('-date')[0:100]
+    indiatoday_headline = Indiatoday.objects.order_by('-date')[0:100]
 
     getHeadLine(republic_headline)
     getHeadLine(ndtv_headline)
     getHeadLine(hindstan_headline)
     getHeadLine(thehindu_headline)
     getHeadLine(zeenews_headline)
+    getHeadLine(indiatoday_headline)
+
+    stop_words = stopwords.words('english')
+    stop_words.append('India')
 
     def ie_preprocess(document):
-        stop_words = stopwords.words('english')
         document = ' '.join([i for i in document.split("w", 4) if i not in stop_words])
         sentences = nltk.sent_tokenize(document)
         sentences = [nltk.word_tokenize(sent) for sent in sentences]
@@ -47,16 +51,7 @@ def run():
 
     names = []
     names2 = []
-    for x in hd:
-        sentences = ie_preprocess(x)
-        for tagged_sentence in sentences:
-            # print(names)
-            for chunk in nltk.ne_chunk(tagged_sentence):
-                if type(chunk) == nltk.tree.Tree:
-                    if chunk.label() == "PERSON":
-                        names.append(' '.join([c[0] for c in chunk]))
-    names_dic = dict({'Word': names})
-    # names=str(names_dic.items())
+
     for x in hd:
         sentences = ie_preprocess(x)
         for tagged_sentence in sentences:
@@ -67,7 +62,7 @@ def run():
                         names2.append(' '.join([c[0] for c in chunk]))
                     # di_data=dict()
     for n in names2:
-        names.append(n)
+        names.append(n.lower())
 
     namefreq = [names.count(p) for p in names]
     d3 = dict(zip(names, namefreq))
@@ -75,11 +70,22 @@ def run():
     s = [(k, d3[k]) for k in sorted(d3, key=d3.get, reverse=True)]
     i = 0
     print("Top 10 searched words")
+
+    my_stop_word_list = []
+    my_stop_word_list.append('india')
+    my_stop_word_list.append('watch')
+    my_stop_word_list.append('indian')
+
     x = []
     y = []
-    while i <= 10:
-        x.append(s[i][0])
-        y.append(s[i][1])
+    i = 0
+    k = 0
+
+    while k <= 10:
+        if s[i][0].lower() not in my_stop_word_list:
+            x.append(s[i][0])
+            y.append(s[i][1])
+            k += 1
         i += 1
     print(x)
     print(y)
